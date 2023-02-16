@@ -1,0 +1,44 @@
+pipeline {
+			agent any
+			
+			stages {
+						stage ('shutdown'){
+						
+							steps {
+							
+								build 'shutdown-env'
+											
+							}
+						}
+						
+						stage ('build'){
+						
+							steps {
+							
+									build 'app-compile'
+											
+							}
+						}
+						
+						stage ('copy'){
+						
+							steps {
+											build 'copy-wars'
+							}
+						}
+						
+						stage ('dev-deploy'){
+						
+							steps {
+											build 'dev-deployment'
+							}
+						}
+						
+						stage ('qa-deploy'){
+						
+							steps {
+											build 'qa-deployment'
+							}
+						}
+			}
+}
